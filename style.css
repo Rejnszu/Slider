@@ -1,0 +1,142 @@
+html {
+  box-sizing: border-box;
+}
+.wrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slider-container {
+  position: relative;
+  overflow: hidden;
+  transition: all 1s;
+  margin-top: 1rem;
+}
+
+.slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: clamp(15rem, 35vw, 27rem);
+  position: relative;
+}
+
+.slide {
+  position: absolute;
+  height: 100%;
+  width: 50%;
+  max-width: 100%;
+  top: 0;
+  opacity: 0;
+  transition: all 1.5s;
+  text-decoration: none !important;
+  font-size: 2rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.slide_1 {
+  background-color: green;
+}
+
+.slide_2 {
+  background-color: red;
+}
+
+.slide_3 {
+  background-color: yellow;
+}
+
+.slide_4 {
+  background-color: violet;
+}
+.slide_5 {
+  background-color: blue;
+}
+
+.prev {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(3rem, 4vw, 4rem);
+  font-weight: 700;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px;
+  width: auto;
+  height: auto;
+  font-family: var(--my-font);
+  z-index: 100;
+  cursor: pointer;
+}
+
+.next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(3rem, 4vw, 4rem);
+  font-weight: 700;
+  z-index: 100;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+  width: auto;
+  height: auto;
+  font-family: var(--my-font);
+  cursor: pointer;
+}
+
+.prev > i,
+.next > i {
+  color: rgb(255, 255, 255);
+  position: relative;
+  transition: all 0.5s linear;
+}
+.prev > i:hover,
+.next > i:hover {
+  color: var(--main-color);
+}
+
+.dot-wrapper {
+  display: flex;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 90;
+}
+
+.dot {
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 0 7px 0 black;
+  width: clamp(0.2rem, 2vw, 0.7rem);
+  height: clamp(0.2rem, 2vw, 0.7rem);
+  border-radius: 50%;
+  padding: clamp(0.5rem, 2vw, 1rem);
+  font-size: clamp(0.5rem, 3vw, 1.5rem);
+  font-weight: 600;
+  margin-right: clamp(0.3rem, 2vw, 1rem);
+  position: relative;
+  z-index: 100;
+  bottom: 0px;
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: grey;
+}
+@media (max-width: 1300px) {
+  .slider {
+    margin-top: 4rem !important;
+  }
+  .next,
+  .prev {
+    top: calc(50% + 2rem);
+  }
+}
