@@ -6,7 +6,7 @@ let dots = document.querySelectorAll(".dot");
 let sliderOffsetX = 100;
 let sliderWidth = 100;
 let sliderMovetime = 9000;
-let s = 0;
+let currentSlideOrder = 0;
 
 function initialSlidesPosition() {
   slides.forEach(function (slide, i) {
@@ -20,25 +20,25 @@ initialSlidesPosition();
 function slideTranslateX() {
   slides.forEach(function (slide, i) {
     slide.style.transform =
-      "translateX(" + -sliderOffsetX * (-i + s) + "%" + ")";
+      "translateX(" + -sliderOffsetX * (-i + currentSlideOrder) + "%" + ")";
   });
 }
 function dotsActive() {
   dots.forEach((dotActive) => dotActive.classList.remove("active"));
-  dots[s].classList.add("active");
+  dots[currentSlideOrder].classList.add("active");
 }
 function previousSlide() {
-  s -= 1;
-  if (s < 0) {
-    s = slides.length - 1;
+  currentSlideOrder -= 1;
+  if (currentSlideOrder < 0) {
+    currentSlideOrder = slides.length - 1;
   }
   dotsActive();
   slideTranslateX();
 }
 function nextSlide() {
-  s += 1;
-  if (s >= slides.length) {
-    s = 0;
+  currentSlideOrder += 1;
+  if (currentSlideOrder >= slides.length) {
+    currentSlideOrder = 0;
   }
   dotsActive();
   slideTranslateX();
@@ -70,7 +70,7 @@ function moveSlides() {
       resetInterval();
       dots.forEach((dotActive) => dotActive.classList.remove("active"));
       this.classList.add("active");
-      s = dotIndex;
+      currentSlideOrder = dotIndex;
       slideTranslateX();
     });
   });
